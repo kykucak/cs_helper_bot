@@ -3,13 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 import telebot
 from telebot import types
 from datetime import datetime
+import os
 
-TOKEN = '1562138384:AAGsrrhEcG0xt4a8xLBs6fo6wipAPZMPRc4'
+TOKEN = os.environ.get("API_TOKEN")
 URL = 'https://api.telegram.org/bot' + TOKEN + '/'
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres+psycopg2://postgres:postgres@localhost:5432/homework'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL',
+                                                       'postgres+psycopg2://postgres:postgres@localhost:5432/homework')
 
 db = SQLAlchemy(app)
 
