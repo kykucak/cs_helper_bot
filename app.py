@@ -61,7 +61,6 @@ class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String, nullable=False)
     link = db.Column(db.String, nullable=False)
-db.create_all()
 
 
 def get_date(date: int):
